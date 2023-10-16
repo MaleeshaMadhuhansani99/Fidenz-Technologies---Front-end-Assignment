@@ -16,7 +16,7 @@
 } */
 
 .App{
-  background-image: url("./background.jpg");
+  background-image: url("../src/imgs/background.jpg");
   background-size: cover;
   min-height: 100vh;
   display: flex;
@@ -43,18 +43,7 @@
 
   }
 
-  .container{
-    margin-top: 50px;
-    margin-right: 40%;
-    margin-left: 40%;
-    border-radius: 10px;
-    width: 55%;
-    height:450px;
-    display: flex;
-    align-items: ceneter;
-    justify-content: center;
-    background:linear-gradient(to bottom, #388ee7 65%, #383b47 35%) ;
-  }
+  
 
 }
 

@@ -1,8 +1,12 @@
 // import logo from './logo.svg';
-import backgroundImage from './background.jpg'
-import logo from './weatherapp.png'
+// import backgroundImage from './background.jpg'
+import React from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import logo from '../src/imgs/weatherapp.png'
 import './App.css';
-import WeatherCard from './Components/WeatherCard.js'
+import backgroundImage from '../src/imgs/background.jpg'
+import Dashboard from './Components/Dashboard'
+import WeatherCard from './Components/WeatherCard';
 
 const App = ()=>{
   return (
@@ -14,10 +18,11 @@ const App = ()=>{
         </h1>
       </div>
 
-      <div className='container'>
-          <WeatherCard/>
-      </div>
-
+      <Switch>
+          <Route exact path="/" component={Dashboard} />
+          <Route exact path="/card/:id" component={WeatherCard} />
+          {/* Define other routes for additional components if needed */}
+        </Switch>
     </div>
   );
 }
