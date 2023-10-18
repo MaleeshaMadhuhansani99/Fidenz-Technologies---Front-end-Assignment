@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './Weather.css';
 import Card from './Card';
 import cityData from './cities.json';
 
 const Dashboard = () => {
   // const [cityCodes, setCityCodes] = useState([]);
-  const codes = cityData.List.map((city) => city.CityCode);
+  const codes = cityData.List.map((city) => city.CityCode); //map city codes to an array
 
+
+
+// call all the card in the dashboard
   return (
     <div className='dashboard'>
       <div className='search'>
@@ -18,7 +21,8 @@ const Dashboard = () => {
           <tbody>
             <tr className='row'>
               <td className='column'>
-                <Card cityCode={codes[0]} />
+              {/* call the weather card with the citycode */}
+                <Card cityCode={codes[0]} /> 
               </td>
               <td className='column'>
                 <Card cityCode={codes[1]} />

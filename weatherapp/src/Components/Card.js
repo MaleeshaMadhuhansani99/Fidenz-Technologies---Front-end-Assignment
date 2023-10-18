@@ -9,8 +9,11 @@ import arrow from '../imgs/back-arrow.png';
 const Card = ({ cityCode }) => {
   const location = useLocation();
   const [desiredCity, setDesiredCity] = useState({});
+  // const [data, setData] = useState({});
+
   const currentDate = new Date();
 
+  //get date and time
   const options = {
     month: 'short',
     day: '2-digit',
@@ -23,6 +26,7 @@ const Card = ({ cityCode }) => {
   const amOrPm = currentDate.getHours() >= 12 ? 'pm' : 'am';
   const finalFormattedDate = formattedDate + ' ' + amOrPm;
 
+  //connecting to the weathermap
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -37,8 +41,8 @@ const Card = ({ cityCode }) => {
         }
 
         const data = await response.json();
-        setDesiredCity(data);
-        console.log(data);
+        setDesiredCity(data.list[0]);
+
       } catch (error) {
         console.error('Error fetching weather data:', error);
       }
@@ -46,26 +50,30 @@ const Card = ({ cityCode }) => {
 
     fetchData();
   }, [cityCode]);
+  
 
+console.log(desiredCity.name)
   const cardId = cityCode;
+  // console.log(cardId)
   const isNewPage = location.pathname === `/card/${cardId}`;
 
+  //UI
   return (
     <Link to={`/card/${cardId}`} style={{ textDecoration: 'none' }}>
       <div className={isNewPage ? 'newContainer' : 'container'}>
         <div className="card">
-          <button className={isNewPage ? 'arrow' : 'cross'}>
-            <img src={isNewPage ? arrow : cross} alt="arrow" />
-          </button>
+         {/* className={isNewPage ? 'arrow' : 'cross'} */}
+            <img className={isNewPage ? 'arrow' : 'cross'} src={isNewPage ? arrow : cross} alt="arrow" />
+          
 
           <div className="top_row">
-            <h2 className={isNewPage ? 'newlocation' : ''} style={{ display: isNewPage ? 'block' : 'none' }}>{desiredCity.name}, LK</h2>
+            <h2 className={isNewPage ? 'newlocation' : ''} style={{ display: isNewPage ? 'block' : 'none' }}>{desiredCity.name}</h2>
             <p style={{ display: isNewPage ? 'block' : 'none' }}>{finalFormattedDate} </p>
             <table className="top">
               <tbody>
                 <tr>
                   <td className="left_column">
-                    <h2 className={isNewPage ? '' : location} style={{ display: isNewPage ? 'none' : 'block' }}>{desiredCity.name}, LK</h2>
+                    <h2 className={isNewPage ? '' : location} style={{ display: isNewPage ? 'none' : 'block' }}>{desiredCity.name}</h2>
                     <p style={{ display: isNewPage ? 'none' : 'block' }}>{finalFormattedDate} </p>
                     <img src={clouds} alt="clouds" />
                     <p>Few Clouds</p>

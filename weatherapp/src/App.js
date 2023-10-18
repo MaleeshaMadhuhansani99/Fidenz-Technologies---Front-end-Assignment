@@ -15,19 +15,6 @@ import LocationWeather from './Components/LocationWeather';
 
 
 function App(){
-  
-  // const Locationweather=()=>{
-  //   return(
-  //     <Layout>
-     
-  //       <LocationWeather/>
-      
-  //     </Layout>
-  //   );
-    
-  // }
-
-  
 
   const router = createBrowserRouter([
     {

@@ -4,6 +4,7 @@ import Dashboard from './Dashboard'
 
 
 import React from 'react'
+import Footer from './Footer'
 
 function Home() {
   return (
@@ -18,6 +19,11 @@ function Home() {
          <div>
              <Dashboard/>
          </div>
+
+         <div className='footer'>
+          <Footer/>
+         </div>
+         
      </div>
  
   )
