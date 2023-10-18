@@ -1,299 +1,355 @@
-.card{   
-    color: white;
-    width: 100%;
-    height: 100%; 
-
-    .arrow{
-        height: 20px;
-        width: 20px;
-        margin-left: 10px;
-        margin-top: 10px;
+.App{
+    background-image: url("../imgs/background.jpg");
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    .header{
+      margin-top: 50px;
+      color: white; 
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  
+      .logo{
+        margin-right: 10px;
+        width: 50px;
+        height: 50px;
+  
+      }
+      .headertext{
+        font-size: 24;
+        margin: 0;
+      }
+  
     }
 
-    .top_row{
-        height: 65%;
-        width: 100%;
-        text-align: center;
-
-        .location{
-            text-align: center;
-        }
-
-        .top{
-            width: 100%;
-            border-collapse: collapse;
-
-            .left_column{
-                padding-left: 40%;
-                width: 50%;
-                text-align: center;
-
-                img{
-                    justify-content: center;
-                }
-                p{
-                    text-align: center;
-                    margin: 0;
-                }
-                
-                
-            }
-            .right_column{
-                /* display: flex; */
-                padding-right: 50%;
-                /* align-items: center;
-                /* padding: 10%; */
-                /* justify-content: center; */ 
-                /* text-align: center; */
-                /* border-left: 1px solid white ; */
-                width: 50%;
-                /* margin-left: 20px; */
-                /* padding: 20px; */
-
-
-                p{
-                
-                    /* margin-right: 0; */
-                    margin-top: -20px;
-                    align-items: center;
-                    margin: 0;
-                }
-                
-            }
-        }    
+    .newContainer{
+            margin-top: 10%;
+            border-radius: 10px;
+            width: 700px;
+            height:400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background:linear-gradient(to bottom, #388ee7 65%, #383b47 35%) ;
+            transition: transform 0.2s ease;
+            /* &:hover {
+                cursor: pointer;
+                transform: scale(1.05);
+              } */
         
-    }
+            .card{   
+                text-decoration: none;
+                color: white;
+                width: 100%;
+                height: 100%; 
+                font-size: 160%;
 
-    
-    .bottom_row{
-        width:100%;
-        height: 10%;
-        /* margin-top: 65%; */
-        margin-bottom: 0;
-
-        .bottom{
-            width: 100%;
-            border-collapse: collapse;
-
-            .column1{
-                padding-left: 10%;
-                width: 33.33%;
-                padding-right: 10%;
-                border-right: 1px solid rgb(125, 121, 121) ;
-                
-            }
-
-            .column2{
-                    /* padding-left: 10%; */
-                    width: 33.3%;
+                .arrow{
+                    height: 15px;
+                    width: 15px;
+                    margin-left: 10px;
+                    margin-top: 10px;
+                    margin-bottom: 0%;
+                    border: none;
+                    background-color: inherit;
+                    /* appearance: none; */
+                }
+             
+                .top_row{
+                    height: 55%;
+                    width: 100%;
                     text-align: center;
-                    /* padding-right: 10%; */
-                    border-right: 1px solid rgb(125, 121, 121) ;
+                    font-size: 50%;
                     
-    
-                    img{
-                        justify-content: center;
-                    }
-                    p{
-                        text-align: center;
-                    }
-            }
+            
+                    .top{
+                        width: 100%;
+                        border-collapse: collapse;
 
-            .column3{
-                padding-left: 10%;
-                width: 33.33%;
+                        .newlocation{
+                            text-align: center;
+                            
+                        }
+            
+                        .left_column{
+                            /* margin-top: 50%; */
+                            padding-left: 25%;
+                            width: 50%;
+                            text-align: center;
+            
+                            img{
+                                justify-content: center;
+                            }
+                            p{
+                                text-align: center;
+                                margin: 0;
+                            }
+                            
+                            
+                        }
+                        .right_column{
+                            /* display: flex; */
+                            padding-right: 25%;
+                            /* align-items: center;
+                            /* padding: 10%; */
+                            /* justify-content: center; */ 
+                            text-align: center;
+                            border-left: 1px solid white ;
+                            width: 50%;
+                            /* padding: 20px; */
+            
+            
+                            p{
+                            
+                                /* margin-right: 0; */
+                                margin-top: -20px;
+                                align-items: center;
+                                margin: 0;
+                            }
+                            
+                        }
+                    }    
+                    
+                }
+            
                 
-                /* border-left: 1px solid white ; */
-               
-            }
-        }
-        
-    }    
-}
-
-
-.dashboard{
-    
-    .search{
-        text-align: center;
-        .addCity{
-            border-radius: 3px;
-           background-color: rgb(58, 57, 57);
-           color: white;
-           border: none;
-           height: 24px;
+                .bottom_row{
+                    width:100%;
+                    height: 10%;
+                    /* margin-top: 65%; */
+                    margin-bottom: 0;
+                    font-size: 50%;
+            
+                    .bottom{
+                        width: 100%;
+                        border-collapse: collapse;
+            
+                        .column1{
+                            padding-left: 10%;
+                            width: 33.33%;
+                            padding-right: 10%;
+                            border-right: 1px solid rgb(125, 121, 121) ;
+                            
+                        }
+            
+                        .column2{
+                                /* padding-left: 10%; */
+                                width: 33.3%;
+                                text-align: center;
+                                /* padding-right: 10%; */
+                                border-right: 1px solid rgb(125, 121, 121) ;
+                                
+                
+                                img{
+                                    justify-content: center;
+                                }
+                                p{
+                                    text-align: center;
+                                }
+                        }
+            
+                        .column3{
+                            padding-left: 10%;
+                            width: 33.33%;
+                            
+                            /* border-left: 1px solid white ; */
+                           
+                        }
+                    }
+                    
+                }    
             
         }
-        .addCityBtn{
-            border-radius: 3px;
-            background-color: #552a8d;
-            height: 28px;
-        }
+
     }
-
-    .cards-container {
-        margin-top: 50px;
-        display: flex;
-        flex-direction: column;
-        /* width: 100%; */
+    
+    .dashboard{
         
-        .dashboardtable{
-            width: 100%;
-        .row {
+        .search{
+            text-align: center;
+            .addCity{
+                margin-top: 4%;
+                border-radius: 3px;
+               background-color: rgb(58, 57, 57);
+               color: white;
+               border: none;
+               height: 24px;
+                
+            }
+            .addCityBtn{
+                color: white;
+                border-radius: 3px;
+                background-color: #552a8d;
+                height: 28px;
+            }
+        }
+    
+        .cards-container {
+            margin-top: 50px;
             display: flex;
-            flex-direction: row;
-            width: 100%;
-
-            .column {
-                flex: 1;
-                margin-right: 100px;
-                margin-bottom: 10px;
-                
-
-                .container{
-                    border-radius: 10px;
-                    width: 150%;
-                    height:200px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    background:linear-gradient(to bottom, #388ee7 65%, #383b47 35%) ;
-                    transition: transform 0.2s ease;
-                    &:hover {
-                        cursor: pointer;
-                        transform: scale(1.05);
-                      }
-                
-                    .card{   
-                        color: white;
-                        width: 100%;
-                        height: 100%; 
+            flex-direction: column;
+            /* width: 100%; */
+            
+            .dashboardtable{
+                width: 100%;
+            .row {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+    
+                .column {
+                    flex: 1;
+                    margin-right: 100px;
+                    margin-bottom: 10px;
                     
-                        .cross{
-                            height: 10px;
-                            width: 10px;
-                            margin-left: 92%;
-                            margin-top: 10px;
-                        }
+                    .container{
+                        border-radius: 10px;
+                        width: 150%;
+                        height:200px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background:linear-gradient(to bottom, #388ee7 65%, #383b47 35%) ;
+                        transition: transform 0.2s ease;
+                        &:hover {
+                            cursor: pointer;
+                            transform: scale(1.05);
+                          }
                     
-                        .top_row{
-                            height: 55%;
+                        .card{   
+                            text-decoration: none;
+                            color: white;
                             width: 100%;
-                            text-align: center;
-                            font-size: 50%;
-                            
-                    
-                            .location{
-                                text-align: center;
-                                
-                            }
-                    
-                            .top{
-                                width: 100%;
-                                border-collapse: collapse;
-                    
-                                .left_column{
-                                    padding-left: 15%;
-                                    width: 50%;
-                                    text-align: center;
-                    
-                                    img{
-                                        justify-content: center;
-                                    }
-                                    p{
-                                        text-align: center;
-                                        margin: 0;
-                                    }
-                                    
-                                    
-                                }
-                                .right_column{
-                                    /* display: flex; */
-                                    padding-right: 15%;
-                                    /* align-items: center;
-                                    /* padding: 10%; */
-                                    /* justify-content: center; */ 
-                                    text-align: center;
-                                    /* border-left: 1px solid white ; */
-                                    width: 50%;
-                                    /* padding: 20px; */
-                    
-                    
-                                    p{
-                                    
-                                        /* margin-right: 0; */
-                                        margin-top: -20px;
-                                        align-items: center;
-                                        margin: 0;
-                                    }
-                                    
-                                }
-                            }    
-                            
-                        }
-                    
+                            height: 100%; 
                         
-                        .bottom_row{
-                            width:100%;
-                            height: 10%;
-                            /* margin-top: 65%; */
-                            margin-bottom: 0;
-                            font-size: 50%;
-                    
-                            .bottom{
+                           .cross{
+                                margin-left: 88%;
+                                margin-top: 0px;
+                                border: none;
+                                background-color: inherit;
+
+                                img{
+                                    height: 3px;
+                                    width: 3px;
+                                }
+                            }
+                        
+                            .top_row{
+                                height: 55%;
                                 width: 100%;
-                                border-collapse: collapse;
-                    
-                                .column1{
-                                    padding-left: 10%;
-                                    width: 33.33%;
-                                    padding-right: 10%;
-                                    border-right: 1px solid rgb(125, 121, 121) ;
+                                text-align: center;
+                                font-size: 50%;
+                                
+                        
+                                .location{
+                                    text-align: center;
                                     
                                 }
-                    
-                                .column2{
-                                        /* padding-left: 10%; */
-                                        width: 33.3%;
+                        
+                                .top{
+                                    width: 100%;
+                                    border-collapse: collapse;
+                        
+                                    .left_column{
+                                        padding-left: 15%;
+                                        width: 50%;
                                         text-align: center;
-                                        /* padding-right: 10%; */
-                                        border-right: 1px solid rgb(125, 121, 121) ;
-                                        
                         
                                         img{
                                             justify-content: center;
                                         }
                                         p{
                                             text-align: center;
+                                            margin: 0;
                                         }
-                                }
-                    
-                                .column3{
-                                    padding-left: 10%;
-                                    width: 33.33%;
-                                    
-                                    /* border-left: 1px solid white ; */
-                                   
-                                }
+                                        
+                                        
+                                    }
+                                    .right_column{
+                                        /* display: flex; */
+                                        padding-right: 15%;
+                                        /* align-items: center;
+                                        /* padding: 10%; */
+                                        /* justify-content: center; */ 
+                                        text-align: center;
+                                        /* border-left: 1px solid white ; */
+                                        width: 50%;
+                                        /* padding: 20px; */
+                        
+                        
+                                        p{
+                                        
+                                            /* margin-right: 0; */
+                                            margin-top: -20px;
+                                            align-items: center;
+                                            margin: 0;
+                                        }
+                                        
+                                    }
+                                }    
+                                
                             }
+                        
                             
-                        }    
+                            .bottom_row{
+                                width:100%;
+                                height: 10%;
+                                /* margin-top: 65%; */
+                                margin-bottom: 0;
+                                font-size: 50%;
+                        
+                                .bottom{
+                                    width: 100%;
+                                    border-collapse: collapse;
+                        
+                                    .column1{
+                                        padding-left: 10%;
+                                        width: 33.33%;
+                                        padding-right: 10%;
+                                        border-right: 1px solid rgb(125, 121, 121) ;
+                                        
+                                    }
+                        
+                                    .column2{
+                                            /* padding-left: 10%; */
+                                            width: 33.3%;
+                                            text-align: center;
+                                            /* padding-right: 10%; */
+                                            border-right: 1px solid rgb(125, 121, 121) ;
+                                            
+                            
+                                            img{
+                                                justify-content: center;
+                                            }
+                                            p{
+                                                text-align: center;
+                                            }
+                                    }
+                        
+                                    .column3{
+                                        padding-left: 10%;
+                                        width: 33.33%;
+                                        
+                                        /* border-left: 1px solid white ; */
+                                       
+                                    }
+                                }
+                                
+                            }    
+                        }
                     }
-                }
-              }
-
-
-          }
-          
-          
-     }
+                  }
+    
+              }           
+         }
+        }      
     }
-      
-      
 }
-
-
-
+    
 
 
 

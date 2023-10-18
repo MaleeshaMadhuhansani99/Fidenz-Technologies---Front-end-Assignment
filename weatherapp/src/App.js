@@ -1,30 +1,54 @@
 // import logo from './logo.svg';
 // import backgroundImage from './background.jpg'
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import logo from '../src/imgs/weatherapp.png'
 import './App.css';
 import backgroundImage from '../src/imgs/background.jpg'
 import Dashboard from './Components/Dashboard'
-import WeatherCard from './Components/WeatherCard';
+import Homepage from './Components/Home';
+import Card from './Components/Card';
+import Layout from './Layout';
+import Home from './Components/Home';
+import LocationWeather from './Components/LocationWeather';
 
-const App = ()=>{
+
+
+function App(){
+  
+  // const Locationweather=()=>{
+  //   return(
+  //     <Layout>
+     
+  //       <LocationWeather/>
+      
+  //     </Layout>
+  //   );
+    
+  // }
+
+  
+
+  const router = createBrowserRouter([
+    {
+      path: "/card/:id",
+      element: <LocationWeather />,
+    },
+    
+    {
+      path:"/",
+      element:<Home />
+    }
+
+
+  ])
+
   return (
-    <div className="App">
-      <div className="header">
-        <img src={logo} className="logo"></img>
-        <h1 className="headertext">
-          Weather App
-        </h1>
-      </div>
-
-      <Switch>
-          <Route exact path="/" component={Dashboard} />
-          <Route exact path="/card/:id" component={WeatherCard} />
-          {/* Define other routes for additional components if needed */}
-        </Switch>
+   
+    <div>
+      <RouterProvider router={router} />
     </div>
-  );
+);
 }
 
 export default App;

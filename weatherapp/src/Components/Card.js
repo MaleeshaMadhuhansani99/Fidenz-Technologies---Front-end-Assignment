@@ -1,76 +1,110 @@
-import React from 'react'
-import './Weather.css'
-// import { useHistory } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import clouds from '../imgs/fewclouds.png'
-import direction from '../imgs/direction.png'
-import cross from '../imgs/cross.png'
-import WeatherCard from './WeatherCard'
+import React, { useEffect, useState } from 'react';
+import './Weather.css';
+import { Link, useLocation } from 'react-router-dom';
+import clouds from '../imgs/fewclouds.png';
+import direction from '../imgs/direction.png';
+import cross from '../imgs/cross.png';
+import arrow from '../imgs/back-arrow.png';
 
-const Card=()=> {
+const Card = ({ cityCode }) => {
+  const location = useLocation();
+  const [desiredCity, setDesiredCity] = useState({});
+  const currentDate = new Date();
 
-    const cardId = "Colombo";
+  const options = {
+    month: 'short',
+    day: '2-digit',
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: false,
+  };
 
-    // const handleClick = () => {
-    //     // const history=useHistory();
-    // }
+  const formattedDate = currentDate.toLocaleString('en-US', options);
+  const amOrPm = currentDate.getHours() >= 12 ? 'pm' : 'am';
+  const finalFormattedDate = formattedDate + ' ' + amOrPm;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const apiBaseUrl = 'http://api.openweathermap.org/data/2.5/group';
+        const apiKey = '607097484eabe8d6dea030e0498848d6';
+        const units = 'metric';
+        const apiUrl = `${apiBaseUrl}?id=${cityCode}&units=${units}&appid=${apiKey}`;
+        const response = await fetch(apiUrl);
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setDesiredCity(data);
+        console.log(data);
+      } catch (error) {
+        console.error('Error fetching weather data:', error);
+      }
+    };
+
+    fetchData();
+  }, [cityCode]);
+
+  const cardId = cityCode;
+  const isNewPage = location.pathname === `/card/${cardId}`;
+
   return (
-    <Link to={`/card/${cardId}`}>
-<div className='container' > 
-<div className='card'>
-    <img className='cross' src={cross}></img>
-    <div className='top_row'> 
-    <table className='top'>     
-        <tbody>
-        <tr>
-        <td className='left_column'> 
-        <h2 className='location'>Colombo, LK</h2>
-        <p>09:19, February 08</p>
-        <img src={clouds}></img>
-        <p>Few Clouds</p>
-       </td>
-       <td className='right_column'>
-        <h1>27 C</h1>
-        <p>Temp Min: 25 C</p>
-        <p>Temp Max: 28 C</p>
-       </td>
-        </tr>
-        </tbody>
-        
-       
-      </table>
-    </div>
+    <Link to={`/card/${cardId}`} style={{ textDecoration: 'none' }}>
+      <div className={isNewPage ? 'newContainer' : 'container'}>
+        <div className="card">
+          <button className={isNewPage ? 'arrow' : 'cross'}>
+            <img src={isNewPage ? arrow : cross} alt="arrow" />
+          </button>
 
-    <div className='bottom_row'>
-      <table className='bottom'>
-        <tbody>
+          <div className="top_row">
+            <h2 className={isNewPage ? 'newlocation' : ''} style={{ display: isNewPage ? 'block' : 'none' }}>{desiredCity.name}, LK</h2>
+            <p style={{ display: isNewPage ? 'block' : 'none' }}>{finalFormattedDate} </p>
+            <table className="top">
+              <tbody>
+                <tr>
+                  <td className="left_column">
+                    <h2 className={isNewPage ? '' : location} style={{ display: isNewPage ? 'none' : 'block' }}>{desiredCity.name}, LK</h2>
+                    <p style={{ display: isNewPage ? 'none' : 'block' }}>{finalFormattedDate} </p>
+                    <img src={clouds} alt="clouds" />
+                    <p>Few Clouds</p>
+                  </td>
+                  <td className="right_column">
+                    <h1>{desiredCity.main ? desiredCity.main.temp : ''}C</h1>
+                    <p>Temp Min: {desiredCity.main ? desiredCity.main.temp_min : ''}C</p>
+                    <p>Temp Max: {desiredCity.main ? desiredCity.main.temp_max : ''}C</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-          <tr>
-            <td className='column1'>
-              <p>pressure:1018hPa</p>
-              <p>Humadity:78%</p>
-              <p>Visibility:8.0km</p>
-            </td>
-
-            <td className='column2'>
-              <img src={direction}></img>
-              <p>4.0m/s 120 Degree</p>
-            </td>
-
-            <td className='column3'>
-              <p>Sunrise:6.05am</p>
-              <p>Sunset:6.05am</p>
-            </td>
-            
-          </tr>
-        </tbody>
-      </table>
-
-    </div>
-  </div>
-  </div>
-  </Link>
-  )
-}
+          <div className="bottom_row">
+            <table className="bottom">
+              <tbody>
+                <tr>
+                  <td className="column1">
+                    <p>pressure: {desiredCity.main ? desiredCity.main.pressure : ''}hPa</p>
+                    <p>Humidity: {desiredCity.main ? desiredCity.main.humidity : ''}%</p>
+                    <p>Visibility: {desiredCity.visibility ? desiredCity.visibility / 1000 : ''} km</p>
+                  </td>
+                  <td className="column2">
+                    <img src={direction} alt="direction" />
+                    <p>4.0m/s 120 Degree</p>
+                  </td>
+                  <td className="column3">
+                    <p>Sunrise: 6.05am</p>
+                    <p>Sunset: 6.05am</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+};
 
 export default Card;

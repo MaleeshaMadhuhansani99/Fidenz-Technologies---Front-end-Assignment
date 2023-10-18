@@ -1,11 +1,11 @@
-// import logo from './logo.svg';
-import React from 'react';
-import Card from './Card.js';
-
+// import React from 'react'
 import logo from '../imgs/weatherapp.png'
+import Dashboard from './Dashboard'
 
 
-const LocationWeather = () => {
+import React from 'react'
+
+function Home() {
   return (
 
       <div className="App">
@@ -16,13 +16,12 @@ const LocationWeather = () => {
           </h1>
 </div>
          <div>
-             <Card/>
+             <Dashboard/>
          </div>
      </div>
  
   )
 }
 
-
-export default LocationWeather;
+export default Home
 
