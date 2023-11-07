@@ -10,6 +10,7 @@ const Card = ({ cityCode }) => {
   const location = useLocation();
   const [desiredCity, setDesiredCity] = useState({});
   // const [data, setData] = useState({});
+  console.log(cityCode);
 
   const currentDate = new Date();
 
@@ -42,6 +43,7 @@ const Card = ({ cityCode }) => {
 
         const data = await response.json();
         setDesiredCity(data.list[0]);
+        // console.log(data.list[0])
 
       } catch (error) {
         console.error('Error fetching weather data:', error);
@@ -52,29 +54,29 @@ const Card = ({ cityCode }) => {
   }, [cityCode]);
   
 
-console.log(desiredCity.name)
-  const cardId = cityCode;
-  // console.log(cardId)
-  const isNewPage = location.pathname === `/card/${cardId}`;
+// console.log(desiredCity.name)
+  // const cardId = cityCode;
+  // // console.log(cardId)
+  // const isNewPage = location.pathname === `/card/${cardId}`;
 
   //UI
   return (
-    <Link to={`/card/${cardId}`} style={{ textDecoration: 'none' }}>
-      <div className={isNewPage ? 'newContainer' : 'container'}>
+  
+      <div className= 'container'>
         <div className="card">
          {/* className={isNewPage ? 'arrow' : 'cross'} */}
-            <img className={isNewPage ? 'arrow' : 'cross'} src={isNewPage ? arrow : cross} alt="arrow" />
+            {/* <img className={isNewPage ? 'arrow' : 'cross'} src={isNewPage ? arrow : cross} alt="arrow" /> */}
           
 
           <div className="top_row">
-            <h2 className={isNewPage ? 'newlocation' : ''} style={{ display: isNewPage ? 'block' : 'none' }}>{desiredCity.name}</h2>
-            <p style={{ display: isNewPage ? 'block' : 'none' }}>{finalFormattedDate} </p>
+            <h2 className={''} style={{ display: 'none' }}>{desiredCity.name}</h2>
+            <p style={{ display: 'none' }}>{finalFormattedDate} </p>
             <table className="top">
               <tbody>
                 <tr>
                   <td className="left_column">
-                    <h2 className={isNewPage ? '' : location} style={{ display: isNewPage ? 'none' : 'block' }}>{desiredCity.name}</h2>
-                    <p style={{ display: isNewPage ? 'none' : 'block' }}>{finalFormattedDate} </p>
+                    <h2 className=' location' style={{ display: 'block' }}>{desiredCity.name}</h2>
+                    <p style={{ display: 'block' }}>{finalFormattedDate} </p>
                     <img src={clouds} alt="clouds" />
                     <p>Few Clouds</p>
                   </td>
@@ -111,7 +113,7 @@ console.log(desiredCity.name)
           </div>
         </div>
       </div>
-    </Link>
+   
   );
 };
 

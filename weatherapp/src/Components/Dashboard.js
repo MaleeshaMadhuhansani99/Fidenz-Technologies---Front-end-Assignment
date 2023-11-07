@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Weather.css';
 import Card from './Card';
 import cityData from './cities.json';
@@ -7,6 +7,11 @@ const Dashboard = () => {
   // const [cityCodes, setCityCodes] = useState([]);
   const codes = cityData.List.map((city) => city.CityCode); //map city codes to an array
 
+  const [selectedCard, setSelectedCard] = useState(null);
+
+  const handleCardClick = (code) => {
+    setSelectedCard(code);
+  };
 
 
 // call all the card in the dashboard
@@ -16,35 +21,26 @@ const Dashboard = () => {
         <input className='addCity' placeholder=' Enter a city'></input>
         <button className='addCityBtn'>Add City</button>
       </div>
+      {selectedCard ? null : (
       <div className='cards-container'>
-        <table className='dashboardtable'>
-          <tbody>
-            <tr className='row'>
-              <td className='column'>
-              {/* call the weather card with the citycode */}
-                <Card cityCode={codes[0]} /> 
-              </td>
-              <td className='column'>
-                <Card cityCode={codes[1]} />
-              </td>
-            </tr>
-            <tr className='row'>
-              <td className='column'>
-                <Card cityCode={codes[2]} />
-              </td>
-              <td className='column'>
-                <Card cityCode={codes[3]} />
-              </td>
-            </tr>
-            <tr className='row'>
-              <td className='column'>
-                <Card cityCode={codes[4]} />
-              </td>
-              <td className='column'></td>
-            </tr>
-          </tbody>
-        </table>
+        <div className='card-grid'>
+          {codes.slice(0,5).map((code,index)=>(
+          
+            <div key={index} className='card-item' onClick={() => handleCardClick(code)}>
+              <Card cityCode={code} />
+              
+            </div>
+          ))}
+        </div>
       </div>
+      )}
+      {selectedCard && (
+        <div className="centered-card">
+          <div className='centered-card-content'>
+          <Card cityCode={selectedCard} />
+        </div>
+        </div>
+      )}
     </div>
   );
 };

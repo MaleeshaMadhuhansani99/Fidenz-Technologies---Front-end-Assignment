@@ -241,40 +241,31 @@
     
         .cards-container {
             margin-top: 50px;
+            /* margin-left: 2px; */
             display: flex;
             flex-direction: column;
             /* width: 100%; */
-            width: 800px;
+            width: 700px;
+            /* align-items: center; */
             
-            .dashboardtable{
-                width: 100%;
-            .row {
-                display: flex;
-                flex-direction: row;
-                width: 100%;
-    
-                .column {
-                    flex: 1;
-                    margin-right: 100px;
-                    margin-bottom: 10px;
-                    width: 200%;
-                    height: 200%;
-                    margin-left: 10%;
-                    
-                    .container{
-                        border-radius: 10px;
-                        width: 170%;
-                        height:250px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        background:linear-gradient(to bottom, #388ee7 65%, #383b47 35%) ;
-                        transition: transform 0.2s ease;
-                        &:hover {
-                            cursor: pointer;
-                            transform: scale(1.05);
-                          }
-                    
+            .card-grid{
+                display: grid;
+                grid-template-columns: repeat(2,1fr);
+                gap: 20px;
+                /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
+
+                .card-item{
+                    width: 100%;
+                    /* background-color: #388ee7; */
+                    border-radius: 10px;
+                    background:linear-gradient(to bottom, #388ee7 65%, #383b47 35%) ;
+                    transition: transform 0.2s ease;
+                
+                    &:hover {
+                        cursor: pointer;
+                        transform: scale(1.05);
+                      }
+
                         .card{   
                             text-decoration: none;
                             color: white;
@@ -398,12 +389,192 @@
                         }
 
                         
-                    }
-                  }
+                    
+                  
     
-              }           
+              }
+                     
          }
-        }   
+         @media (max-width: 768px) {
+            .card-grid {
+              grid-template-columns: 1fr;
+              /* width: 80%; */
+            }
+        }    
+        }  
+
+       
+
+        @media (max-width: 768px) {
+            .cards-container {
+              width: 300px;
+            }
+        } 
+        
+        .centered-card {
+            display: flex;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            max-width: 600px;
+            height: 400px;
+            background: white;
+            /* z-index: 1000; */
+            border-radius: 10px;
+            /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+
+            
+                .centered-card-content{
+                    width: 100%;
+                    /* background-color: #388ee7; */
+                    border-radius: 10px;
+                    background:linear-gradient(to bottom, #388ee7 65%, #383b47 35%) ;
+                    transition: transform 0.2s ease;
+                
+                  
+                        .card{   
+                            text-decoration: none;
+                            color: white;
+                            width: 100%;
+                            height: 100%; 
+                            margin-right: 10px;
+                        
+                           .cross{
+                                margin-left: 90%;
+                                margin-top: 3%;
+                                border: none;
+                                background-color: inherit;
+                                height: fit-content;
+                                height: 15px;
+                                width: 15px;
+                              
+                            }
+                            .location{
+                                text-align: center;
+                                font-size: 200%;
+                               margin-left: 70%;
+                               margin-bottom: 10%;
+                                
+                            }
+                        
+                            .top_row{
+                                height: 65%;
+                                width: 100%;
+                                text-align: center;
+                                font-size: 90%;
+                                 
+                        
+                                .top{
+                                    width: 100%;
+                                    border-collapse: collapse;
+                        
+                                    .left_column{
+                                        padding-left: 15%;
+                                        width: 50%;
+                                        text-align: center;
+                        
+                                        img{
+                                            justify-content: center;
+                                        }
+                                        p{
+                                            text-align: center;
+                                            margin: 0;
+                                        }
+                                        
+                                        
+                                    }
+                                    .right_column{
+                                        /* display: flex; */
+                                        padding-right: 15%;
+                                        /* align-items: center;
+                                        /* padding: 10%; */
+                                        /* justify-content: center; */ 
+                                        margin-top: 20%;
+                                        text-align: center;
+                                        border-left: 1px solid white ;
+                                        width: 50%;
+                                        height: fit-content;
+                                        /* padding: 20px; */
+                        
+                        
+                                        p{
+                                        
+                                            /* margin-right: 0; */
+                                            margin-top: -20px;
+                                            align-items: center;
+                                            margin: 0;
+                                        }
+                                        
+                                    }
+                                }    
+                                
+                            }
+                        
+                            
+                            .bottom_row{
+                                width:100%;
+                                height: 10%;
+                                /* margin-top: 65%; */
+                                margin-bottom: 0;
+                                font-size: 90%;
+                        
+                                .bottom{
+                                    width: 100%;
+                                    border-collapse: collapse;
+                        
+                                    .column1{
+                                        padding-left: 10%;
+                                        width: 33.33%;
+                                        padding-right: 5%;
+                                        border-right: 1px solid rgb(125, 121, 121) ;
+                                        
+                                    }
+                        
+                                    .column2{
+                                            /* padding-left: 10%; */
+                                            width: 33.3%;
+                                            text-align: center;
+                                            /* padding-right: 10%; */
+                                            border-right: 1px solid rgb(125, 121, 121) ;
+                                            
+                            
+                                            img{
+                                                justify-content: center;
+                                            }
+                                            p{
+                                                text-align: center;
+                                            }
+                                    }
+                        
+                                    .column3{
+                                        padding-left: 10%;
+                                        width: 33.33%;
+                                        
+                                        /* border-left: 1px solid white ; */
+                                       
+                                    }
+                                }
+                                
+                            }    
+                        }
+
+                        
+                    
+                  
+    
+              }
+                     
+         
+         @media (max-width: 768px) {
+            .card-grid {
+              grid-template-columns: 1fr;
+              /* width: 80%; */
+            }
+        }  
+          }
+          
         
         
     }
