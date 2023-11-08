@@ -5,7 +5,6 @@ import cityData from '../cities.json'
 import arrow from '../imgs/back-arrow.png'
 
 const Dashboard = () => {
-  // const [cityCodes, setCityCodes] = useState([]);
   const codes = cityData.List.map((city) => city.CityCode) //map city codes to an array
 
   const [selectedCard, setSelectedCard] = useState(null)

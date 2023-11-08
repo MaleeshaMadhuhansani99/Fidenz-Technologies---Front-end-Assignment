@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from 'react'
 import './Weather.css'
 import {Link, useLocation} from 'react-router-dom'
-import clouds from '../imgs/fewclouds.png'
-import direction from '../imgs/direction.png'
-import cross from '../imgs/cross.png'
 import {apiBaseUrl, units} from '../constants.js'
-// require('dotenv').config();
+import TopRow from './TopRow.js'
+import BottomRow from './BottomRow.js'
 
 const Card = ({cityCode}) => {
   const location = useLocation()
@@ -54,66 +52,13 @@ const Card = ({cityCode}) => {
           <h2 className={'location1'}>{desiredCity.name}</h2>
           <p className="date1">{finalFormattedDate} </p>
 
-          <table className="top">
-            <tbody>
-              <tr>
-                <td className="left_column">
-                  <h2 className="location2">{desiredCity.name}</h2>
-                  <p className="date2">{finalFormattedDate} </p>
-                  <img src={clouds} alt="clouds" />
-                  <p>Few Clouds</p>
-                </td>
-                <td className="right_column">
-                  <strong>
-                    <p className="temp">
-                      {desiredCity.main ? desiredCity.main.temp : ''}°C
-                    </p>
-                  </strong>
-                  <p>
-                    Temp Min:{' '}
-                    {desiredCity.main ? desiredCity.main.temp_min : ''}°C
-                  </p>
-                  <p>
-                    Temp Max:{' '}
-                    {desiredCity.main ? desiredCity.main.temp_max : ''}°C
-                  </p>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <TopRow
+            desiredCity={desiredCity}
+            finalFormattedDate={finalFormattedDate}
+          />
 
           <div className="bottom_row">
-            <table className="bottom">
-              <tbody>
-                <tr>
-                  <td className="column1">
-                    <p>
-                      Pressure:{' '}
-                      {desiredCity.main ? desiredCity.main.pressure : ''}hPa
-                    </p>
-                    <p>
-                      Humidity:{' '}
-                      {desiredCity.main ? desiredCity.main.humidity : ''}%
-                    </p>
-                    <p>
-                      Visibility:{' '}
-                      {desiredCity.visibility
-                        ? desiredCity.visibility / 1000
-                        : ''}
-                      km
-                    </p>
-                  </td>
-                  <td className="column2">
-                    <img src={direction} alt="direction" />
-                    <p>4.0m/s 120 Degree</p>
-                  </td>
-                  <td className="column3">
-                    <p>Sunrise: 6.05am</p>
-                    <p>Sunset: 6.05am</p>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <BottomRow desiredCity={desiredCity} />
           </div>
         </div>
       </div>
