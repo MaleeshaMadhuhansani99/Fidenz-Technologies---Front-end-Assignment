@@ -1,41 +1,28 @@
-// import logo from './logo.svg';
-// import backgroundImage from './background.jpg'
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch, RouterProvider, createBrowserRouter } from 'react-router-dom';
-import logo from '../src/imgs/weatherapp.png'
-import './App.css';
-import backgroundImage from '../src/imgs/background.jpg'
-import Dashboard from './Components/Dashboard'
-import Homepage from './Components/Home';
-import Card from './Components/Card';
-import Layout from './Layout';
-import Home from './Components/Home';
-import LocationWeather from './Components/LocationWeather';
+import {RouterProvider, createBrowserRouter} from 'react-router-dom'
+import Weatherhome from './pages/weatherhome'
+import './App.css'
 
-
-
-function App(){
-
+function App() {
+  const Weathermaphome = () => {
+    return (
+      <div>
+        <Weatherhome />
+      </div>
+    )
+  }
   const router = createBrowserRouter([
     {
-      path: "/card/:id",
-      element: <LocationWeather />,
+      path: '/',
+      element: <Weathermaphome />,
     },
-    
-    {
-      path:"/",
-      element:<Home />
-    }
-
-
   ])
 
   return (
-   
     <div>
       <RouterProvider router={router} />
     </div>
-);
+  )
 }
 
-export default App;
+export default App
