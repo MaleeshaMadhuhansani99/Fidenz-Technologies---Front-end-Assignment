@@ -5,7 +5,6 @@ import BottomRow from './BottomRow.js'
 import fetchData from './CheckCache.js'
 
 const Card = ({cityCode}) => {
-  // const location = useLocation();
   const [desiredCity, setDesiredCity] = useState({})
 
   const currentDate = new Date()
