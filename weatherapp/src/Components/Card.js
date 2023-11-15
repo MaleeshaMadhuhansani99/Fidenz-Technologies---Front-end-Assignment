@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import './Weather.css'
+import './Weather.scss'
 import {Link, useLocation} from 'react-router-dom'
 import {apiBaseUrl, units} from '../constants.js'
 import TopRow from './TopRow.js'

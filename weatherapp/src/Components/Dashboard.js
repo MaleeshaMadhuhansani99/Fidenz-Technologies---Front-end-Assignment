@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import './Weather.css'
+import './Weather.scss'
 import Card from './Card'
 import cityData from '../cities.json'
 import arrow from '../imgs/back-arrow.png'
