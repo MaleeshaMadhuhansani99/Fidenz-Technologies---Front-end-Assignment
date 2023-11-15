@@ -24,7 +24,7 @@ const Dashboard = () => {
           </div>
           <div className="cards-container">
             <div className="card-grid">
-              {codes.slice(0, 5).map((code, index) => (
+              {codes.map((code, index) => (
                 <div
                   key={index}
                   className="card-item"

@@ -1,17 +1,16 @@
 import React, {useEffect, useState} from 'react'
 import './Weather.scss'
-import {Link, useLocation} from 'react-router-dom'
-import {apiBaseUrl, units} from '../constants.js'
 import TopRow from './TopRow.js'
 import BottomRow from './BottomRow.js'
+import fetchData from './CheckCache.js'
 
 const Card = ({cityCode}) => {
-  const location = useLocation()
+  // const location = useLocation();
   const [desiredCity, setDesiredCity] = useState({})
 
   const currentDate = new Date()
 
-  //get date and time
+  // get date and time
   const options = {
     month: 'short',
     day: '2-digit',
@@ -24,25 +23,18 @@ const Card = ({cityCode}) => {
   const amOrPm = currentDate.getHours() >= 12 ? 'pm' : 'am'
   const finalFormattedDate = formattedDate + ' ' + amOrPm
 
-  //connecting to the weathermap
+  // connecting to the weathermap
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchDataAndUpdateState = async () => {
       try {
-        const apiUrl = `${apiBaseUrl}?id=${cityCode}&units=${units}&appid=${process.env.REACT_APP_WEATHERMAP_KEY}`
-        const response = await fetch(apiUrl)
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`)
-        }
-
-        const data = await response.json()
-        setDesiredCity(data.list[0])
+        const data = await fetchData(cityCode)
+        setDesiredCity(data)
       } catch (error) {
         console.error('Error fetching weather data:', error)
       }
     }
 
-    fetchData()
+    fetchDataAndUpdateState()
   }, [cityCode])
 
   return (
