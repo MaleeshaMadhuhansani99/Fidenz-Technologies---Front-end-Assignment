@@ -4,7 +4,7 @@ import logo from '../imgs/weatherapp.png'
 function Header() {
   return (
     <div className="header">
-      <img src={logo} className="logo"></img>
+      <img src={logo} className="logo" alt='logo'></img>
       <h1 className="headertext">Weather App</h1>
     </div>
   )
