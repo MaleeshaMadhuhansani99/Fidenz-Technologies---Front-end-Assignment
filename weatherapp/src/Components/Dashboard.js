@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import './Weather.css'
+import './Weather.scss'
 import Card from './Card'
 import cityData from '../cities.json'
 import arrow from '../imgs/back-arrow.png'
@@ -24,7 +24,7 @@ const Dashboard = () => {
           </div>
           <div className="cards-container">
             <div className="card-grid">
-              {codes.slice(0, 5).map((code, index) => (
+              {codes.map((code, index) => (
                 <div
                   key={index}
                   className="card-item"
