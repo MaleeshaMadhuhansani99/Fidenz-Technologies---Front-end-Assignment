@@ -228,6 +228,12 @@
       }
     }
 
+    @media (max-width: 280px) {
+      .cards-container {
+        width: 250px;
+      }
+    }
+
     .centeredcard {
       display: flex;
       position: fixed;
@@ -384,6 +390,14 @@
     }
 
     @media (max-width: 768px) {
+      .centeredcard {
+        width: 80%;
+        height: 50%;
+        font-size: 80%;
+      }
+    }
+
+    @media (max-width: 280px) {
       .centeredcard {
         width: 80%;
         height: 50%;
