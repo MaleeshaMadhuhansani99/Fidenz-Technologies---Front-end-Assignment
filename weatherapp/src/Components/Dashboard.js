@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
-import './Weather.scss'
+// import './Weather.scss'
+import './weatherapp.css'
 import Card from './Card'
 import cityData from '../cities.json'
 import arrow from '../imgs/back-arrow.png'
@@ -30,7 +31,7 @@ const Dashboard = () => {
                   className="card-item"
                   onClick={() => handleCardClick(code)}
                 >
-                  <Card cityCode={code} />
+                  <Card cityCode={code} isSelected={false}/>
                 </div>
               ))}
             </div>
@@ -46,7 +47,7 @@ const Dashboard = () => {
               alt="arrow"
               onClick={() => setSelectedCard(null)}
             />
-            <Card cityCode={selectedCard} />
+            <Card cityCode={selectedCard} isSelected={true} />
           </div>
         </div>
       )}

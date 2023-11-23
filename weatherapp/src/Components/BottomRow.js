@@ -1,12 +1,13 @@
 import React from 'react'
 import direction from '../imgs/direction.png'
+import './weatherapp.css'
 
-function BottomRow({desiredCity}) {
+function BottomRow({desiredCity, isSelected}) {
   return (
-    <table className="bottom">
+    <table className={`bottom ${isSelected ? 'selected' : ''}`}>
       <tbody>
         <tr>
-          <td className="column1">
+          <td className={`column1 ${isSelected ? 'selected' : ''}`}>
             <p>
               Pressure: {desiredCity.main ? desiredCity.main.pressure : ''}
               hPa{' '}
@@ -20,11 +21,11 @@ function BottomRow({desiredCity}) {
               km{' '}
             </p>
           </td>
-          <td className="column2">
-            <img src={direction} alt="direction" />
-            <p> 4.0 m / s 120 Degree </p>
+          <td className={`column2 ${isSelected ? 'selected' : ''}`}>
+            <img className="column2img" src={direction} alt="direction" />
+            <p className="column2p"> 4.0 m / s 120 Degree </p>
           </td>
-          <td className="column3">
+          <td className={`column3 ${isSelected ? 'selected' : ''}`}>
             <p> Sunrise: 6.05 am </p> <p> Sunset: 6.05 am </p>
           </td>
         </tr>

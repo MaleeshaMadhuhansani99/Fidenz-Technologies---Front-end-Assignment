@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react'
-import './Weather.scss'
+// import './Weather.scss'
+import './weatherapp.css'
 import TopRow from './TopRow.js'
 import BottomRow from './BottomRow.js'
 import fetchData from './CheckCache.js'
 
-const Card = ({cityCode}) => {
+const Card = ({cityCode, isSelected}) => {
   const [desiredCity, setDesiredCity] = useState({})
 
   const currentDate = new Date()
@@ -38,18 +39,22 @@ const Card = ({cityCode}) => {
 
   return (
     <div className="container">
-      <div className="card">
-        <div className="top_row">
-          <h2 className={'location1'}>{desiredCity.name}</h2>
-          <p className="date1">{finalFormattedDate} </p>
-
+      <div className={`card ${isSelected ? 'selected' : ''}`}>
+        <div className={`top_row ${isSelected ? 'selected' : ''}`}>
+          {isSelected && (
+            <div>
+              <h2 className="location1selected">{desiredCity.name}</h2>
+              <p className="date1selected">{finalFormattedDate} </p>
+            </div>
+          )}
           <TopRow
             desiredCity={desiredCity}
             finalFormattedDate={finalFormattedDate}
+            isSelected={isSelected}
           />
 
-          <div className="bottom_row">
-            <BottomRow desiredCity={desiredCity} />
+          <div className={`bottom_row ${isSelected ? 'selected' : ''}`}>
+            <BottomRow desiredCity={desiredCity} isSelected={isSelected} />
           </div>
         </div>
       </div>
